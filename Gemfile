@@ -17,8 +17,12 @@ gem 'active_model_serializers'
 
 
 group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
+	gem 'byebug'
+	gem 'web-console', '~> 2.0'
+	gem 'spring'
+	gem 'rspec-rails', '~> 3.0'
+	gem "factory_girl_rails"
+	gem 'ffaker'
 end
+
 
