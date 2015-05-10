@@ -15,4 +15,7 @@ class Api::V1::SessionsController < ApplicationController
 		end
 	end
 
+	# NOTE: skipped destroy method since its optional and was throwing a devise error
+
+
 end
