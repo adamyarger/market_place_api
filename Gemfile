@@ -13,6 +13,7 @@ gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
 gem 'furatto', github: "IcaliaLabs/furatto-rails"
 gem 'font-awesome-rails'
 gem 'simple_form'
+gem 'rspec-collection_matchers'
 
 group :doc do
 	gem 'sdoc', require: false
