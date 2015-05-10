@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe Api::V1::UsersController do
   describe "GET #show" do
-    before(:each) do 
+    before(:each) do
       @user = FactoryGirl.create :user
       get :show, id: @user.id
     end
 
     it "returns the information about a reporter on a hash" do
-      user_response = json_response
+      user_response = json_response[:user]
       expect(user_response[:email]).to eql @user.email
     end
 
@@ -24,7 +24,7 @@ describe Api::V1::UsersController do
       end
 
       it "renders the json representation for the user record just created" do
-        user_response = json_response
+        user_response = json_response[:user]
         expect(user_response[:email]).to eql @user_attributes[:email]
       end
 
@@ -33,7 +33,10 @@ describe Api::V1::UsersController do
 
     context "when is not created" do
       before(:each) do
-        @invalid_user_attributes = { password: "12345678", password_confirmation: "12345678" } #notice I'm not including the email
+        @invalid_user_attributes = {
+            password: "12345678",
+            password_confirmation: "12345678"
+          } #notice I'm not including the email
         post :create, { user: @invalid_user_attributes }
       end
 
@@ -54,7 +57,7 @@ describe Api::V1::UsersController do
   describe "PUT/PATCH #update" do
     before(:each) do
       @user = FactoryGirl.create :user
-      api_authorization_header @user.auth_token 
+      api_authorization_header @user.auth_token
     end
 
     context "when is successfully updated" do
@@ -63,7 +66,7 @@ describe Api::V1::UsersController do
       end
 
       it "renders the json representation for the updated user" do
-        user_response = json_response
+        user_response = json_response[:user]
         expect(user_response[:email]).to eql "newmail@example.com"
       end
 
@@ -92,7 +95,7 @@ describe Api::V1::UsersController do
   describe "DELETE #destroy" do
     before(:each) do
       @user = FactoryGirl.create :user
-      api_authorization_header @user.auth_token 
+      api_authorization_header @user.auth_token
       delete :destroy, { id: @user.id }
     end
 
