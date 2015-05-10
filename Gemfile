@@ -20,18 +20,17 @@ group :doc do
 end
 
 group :development do
-	gem 'sqlite3'
 	gem 'web-console', '~> 2.0'
-
 end
 
 group :development, :test do
-	gem 'byebug'
-	gem "rspec-rails"
-	gem "factory_girl_rails"
-	gem 'ffaker'
-	gem 'shoulda-matchers'
-	gem 'spring'
+  gem "factory_girl_rails"
+  gem 'ffaker'
+end
+
+group :test do
+  gem "rspec-rails"
+  gem "shoulda-matchers"
 end
 
 gem 'devise'
