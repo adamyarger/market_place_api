@@ -12,4 +12,8 @@ class Product < ActiveRecord::Base
 	scope :above_or_equal_to_price, lambda { |price|
 	 	where("price >= ?", price)
 	}
+
+	scope :below_or_equal_to_price, lambda { |price|
+		where("price <= ?", price)
+	}
 end

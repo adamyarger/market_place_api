@@ -50,6 +50,19 @@ describe Product do
   		expect(Product.above_or_equal_to_price(100).sort).to match_array([@product1, @product3])
   	end
   end
+
+  describe ".below_or_equal_to_price" do
+  	before(:each) do
+  		@product1 = FactoryGirl.create :product, price: 100
+  		@product2 = FactoryGirl.create :product, price: 50
+  		@product3 = FactoryGirl.create :product, price: 150
+  		@product4 = FactoryGirl.create :product, price: 99
+  	end
+
+  	it "returns the products which are below or equal to the price" do
+  		expect(Product.below_or_equal_to_price(99).sort).to match_array([@product2, @product4])
+  	end
+  end
 end
 
 
